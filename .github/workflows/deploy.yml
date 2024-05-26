@@ -16,17 +16,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '21.6.2'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build the project
-        run: npm run build
-
-      - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          git remote add heroku https://git.heroku.com/<graphql-ejemplo1>.git
-          git push heroku main
+      - name: Start server
+        run: npm start
