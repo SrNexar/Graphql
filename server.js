@@ -1,16 +1,12 @@
 const { ApolloServer } = require('apollo-server');
-const express = require('express');
-
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-const app = express();
-
-server.applyMiddleware({ app });
-
+// Obtener el puerto de la variable de entorno PORT o usar el puerto 4000 por defecto
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
+
+server.listen(PORT).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
 });
