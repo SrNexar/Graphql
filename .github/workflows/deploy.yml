@@ -25,3 +25,12 @@ jobs:
         run: npm start &
       - name: Wait for server to start
         run: sleep 10
+     
+
+
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: 'graphql-ejemplo1'
+          heroku_email: 'nfsalguero@uce.edu.ec'
