@@ -1,8 +1,9 @@
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
+const server = new ApolloServer({ typeDefs, resolvers, playground: true });
 
-const server = new ApolloServer({ typeDefs, resolvers });
+
 
 // Obtener el puerto de la variable de entorno PORT o usar el puerto 4000 por defecto
 const PORT = process.env.PORT || 4000;
